@@ -5,31 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ESP32 Sensor Dashboard</title>
     
-    <!-- Link to the PWA Manifest -->
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#2c3e50">
+    <!-- Dark theme color for mobile browsers -->
+    <meta name="theme-color" content="#0f172a">
     
+    <!-- Clean, modern font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="dashboard">
-        <h1>System Monitor</h1>
+        <header>
+            <h1>System Monitor</h1>
+            <!-- Changed to a badge style -->
+            <div class="status-badge" id="connection-status">Disconnected. Retrying...</div>
+        </header>
         
         <div class="widget-container">
-            <!-- Temperature Widget -->
-            <div class="widget">
+            <div class="widget temperature-card">
+                <div class="icon">🌡️</div>
                 <h2>Temperature</h2>
-                <div class="value" id="temp-value">--°C</div>
+                <div class="value" id="temp-value">--<span class="unit">°C</span></div>
             </div>
 
-            <!-- Humidity Widget -->
-            <div class="widget">
+            <div class="widget humidity-card">
+                <div class="icon">💧</div>
                 <h2>Humidity</h2>
-                <div class="value" id="hum-value">--%</div>
+                <div class="value" id="hum-value">--<span class="unit">%</span></div>
             </div>
         </div>
-        
-        <div class="status" id="connection-status">Connecting to ESP32...</div>
     </div>
 
     <script src="app.js"></script>

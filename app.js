@@ -19,15 +19,17 @@ function initWebSocket() {
 
 function onOpen(event) {
     console.log('Connection opened');
-    document.getElementById('connection-status').innerText = "Connected to ESP32";
-    document.getElementById('connection-status').style.color = "#27ae60";
+    const status = document.getElementById('connection-status');
+    status.innerText = "Connected to ESP32";
+    status.className = "status-badge connected"; // Adds the green styling
 }
 
 function onClose(event) {
     console.log('Connection closed');
-    document.getElementById('connection-status').innerText = "Disconnected. Retrying...";
-    document.getElementById('connection-status').style.color = "#e74c3c";
-    setTimeout(initWebSocket, 2000); // Try to reconnect every 2 seconds
+    const status = document.getElementById('connection-status');
+    status.innerText = "Disconnected. Retrying...";
+    status.className = "status-badge"; // Reverts to the red styling
+    setTimeout(initWebSocket, 2000);
 }
 
 // 3. Handle Incoming Data
